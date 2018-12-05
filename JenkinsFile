@@ -3,7 +3,7 @@ pipeline {
     stages {
               stage('Checkout') {
                      steps {
-                          bat 'checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9d7dabba-98a2-4956-86b5-f3b9becf19a4', url: 'https://github.com/khawarhabib/WebTest.git']]])'
+                          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9d7dabba-98a2-4956-86b5-f3b9becf19a4', url: 'https://github.com/khawarhabib/WebTest.git']]])
                      }
               }
 
