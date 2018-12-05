@@ -1,7 +1,7 @@
 pipeline {
 
        agent {
-              label 'dotnetcore'
+              label 'Agent_1'
        }
 
        stages {
@@ -13,15 +13,14 @@ pipeline {
 
               stage('Build') {
                      steps {
-                           bat 'dotnet restore /p:RestoreUseSkipNonexistentTargets="false" InventoryAPI\\InventoryAPI.csproj'
-                           bat "\"${tool 'MSBuild'}\\..\\msbuild.exe\" InventoryAPI\\InventoryAPI.csproj /p:Configuration=Release /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"                               
+                           bat "\"${tool 'MSBuild'}\\..\\msbuild.exe\" WebApplication1.sln /p:Configuration=Release "                               
                      }
 
               }
 
               stage('Archive') {
                      steps {
-                           archive 'InventoryAPI\\bin\\Release\\**'
+                           archive 'WebRelease\\Releases\\**'
                      }
                      
               }
